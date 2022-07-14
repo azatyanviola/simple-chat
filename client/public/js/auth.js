@@ -11,6 +11,7 @@ function response(data) {
     return resp;
   }
   
+  
   $('.logout-btn').on('click', e => {
     e.preventDefault();
     $.ajax({

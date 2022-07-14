@@ -1,5 +1,5 @@
 
-global.Promise = require("bluebird");
+global.Promise = require('bluebird');
 const env = require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
