@@ -8,17 +8,18 @@ const PORT = process.env.PORT || 3000;
 
 const express = require("express");
 const app = express();
+const http = require("http");
 const nunjucks = require("nunjucks");
-const server = require("http").Server(app);
+const server = http.createServer(app);
 const io = require("socket.io")(server, { serveClient: true });
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const config = require("./config");
+const config = require("./server/config");
 
 const passport = require("passport");
 const { Strategy } = require("passport-jwt");
 
-const { jwt } = require("./config");
+const { jwt } = require("./server/config");
 
 passport.use(
   new Strategy(jwt, function(jwt_payload, done) {
@@ -52,10 +53,10 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-require("./router")(app);
+require("./server/router")(app);
 
-require("./sockets")(io);
+require("./server/sockets")(io);
 
-server.listen(PORT, "0.0.0.0", () => {
+server.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
