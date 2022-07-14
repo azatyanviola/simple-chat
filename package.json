@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node index.js"
   },
+  "engines": {
+    "node": "16.15.0"
+  },
   "keywords": [
     "chat",
     "socket.io",
