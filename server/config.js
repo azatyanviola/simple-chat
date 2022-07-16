@@ -2,7 +2,7 @@
 function ExtractJwt(req) {
     let token = null;
     if (req.cookies && req.cookies.token != void 0) {
-      token = req.cookies["token"];
+      token = req.cookies['token'];
     }
     return token;
   }
@@ -11,10 +11,10 @@ function ExtractJwt(req) {
   module.exports = {
     jwt: {
       jwtFromRequest: ExtractJwt,
-      secretOrKey: "TfbTq2NfLzqMcbVY9EpGQ2p"
+      secretOrKey: 'TfbTq2NfLzqMcbVY9EpGQ2p'
     },
   
-    expiresIn: "1 day",
+    expiresIn: '1 day',
 }
 //     mongo: {
 //       url: 'mongodb+srv://Avioleta:q2LFzHOnql0hSd7M@node-chat.lmbptbi.mongodb.net/?retryWrites=true&w=majority' || "mongodb://localhost:27017/",

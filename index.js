@@ -6,20 +6,20 @@ const PORT = process.env.PORT || 3000;
 
 
 
-const express = require("express");
+const express = require('express');
 const app = express();
-const http = require("http");
-const nunjucks = require("nunjucks");
+const http = require('http');
+const nunjucks = require('nunjucks');
 const server = http.createServer(app);
-const io = require("socket.io")(server, { serveClient: true });
-const mongoose = require("mongoose");
-const cookieParser = require("cookie-parser");
-const config = require("./server/config");
+const io = require('socket.io')(server, { serveClient: true });
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+const config = require('./server/config');
 
-const passport = require("passport");
-const { Strategy } = require("passport-jwt");
+const passport = require('passport');
+const { Strategy } = require('passport-jwt');
 
-const { jwt } = require("./server/config");
+const { jwt } = require('./server/config');
 
 passport.use(
   new Strategy(jwt, function(jwt_payload, done) {
@@ -41,7 +41,7 @@ const url = 'mongodb+srv://Avioleta:q2LFzHOnql0hSd7M@node-chat.lmbptbi.mongodb.n
 
 mongoose.connect(url, {useNewUrlParser: true});
 
-nunjucks.configure("./client/views", {
+nunjucks.configure('./client/views', {
   autoescape: true,
   express: app
 });
@@ -53,9 +53,9 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-require("./server/router")(app);
+require('./server/router')(app);
 
-require("./server/sockets")(io);
+require('./server/sockets')(io);
 
 server.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
